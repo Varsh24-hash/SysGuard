@@ -12,7 +12,8 @@ import {
   Terminal,
   Activity,
   LogOut,
-  AlertOctagon
+  AlertOctagon,
+  Radio
 } from 'lucide-react';
 import { ViewState, SecurityAlert } from '../types';
 
@@ -28,6 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activeView, setView, onLogout
   const unreadCount = alerts.filter(a => !a.read).length;
   
   const menuItems = [
+    { id: 'LIVE', label: 'Live Monitor', icon: Radio },
     { id: 'UPLOAD', label: 'Ingestion', icon: Upload },
     { id: 'DASHBOARD', label: 'Analysis', icon: LayoutDashboard },
     { id: 'ALERTS', label: 'Alert Center', icon: Bell, count: unreadCount },
@@ -58,7 +60,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activeView, setView, onLogout
                   : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'
               }`}
             >
-              <item.icon className="w-5 h-5" />
+              <item.icon className={`w-5 h-5 ${item.id === 'LIVE' && 'animate-pulse text-sky-500'}`} />
               <span className="font-medium">{item.label}</span>
               {item.count !== undefined && item.count > 0 && (
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 bg-red-500 text-white text-[10px] font-black rounded-full min-w-[18px] text-center">

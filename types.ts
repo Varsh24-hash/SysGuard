@@ -19,6 +19,14 @@ export interface TimelinePoint {
   anomalyScore: number;
 }
 
+export interface LiveEvent {
+  pid: number;
+  syscall: string;
+  timestamp: number;
+  alert: boolean;
+  message?: string;
+}
+
 export interface SecurityAlert {
   id: string;
   severity: RiskLevel;
@@ -44,4 +52,4 @@ export interface AnalysisResult {
   };
 }
 
-export type ViewState = 'UPLOAD' | 'DASHBOARD' | 'HISTORY' | 'SETTINGS' | 'ALERTS';
+export type ViewState = 'UPLOAD' | 'DASHBOARD' | 'HISTORY' | 'SETTINGS' | 'ALERTS' | 'LIVE';
